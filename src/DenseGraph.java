@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Vector;
 
+//稠密图 邻接矩阵
 public class DenseGraph implements Graph{
     private int vertex;
     private int edge;

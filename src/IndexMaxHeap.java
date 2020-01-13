@@ -134,4 +134,12 @@ public class IndexMaxHeap<E extends Comparable<E>>{
 
         return true;
     }
+
+    public static void main(String[] args) {
+        int N = 1000000;
+        IndexMaxHeap<Integer> indexMaxHeap = new IndexMaxHeap<>(N);
+        for( int i = 0 ; i < N ; i ++ )
+            indexMaxHeap.add( i , (int)(Math.random()*N) );
+        assert indexMaxHeap.testIndexes();
+    }
 }

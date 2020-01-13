@@ -79,4 +79,18 @@ public class QuickSort {
         arr[i]=arr[j];
         arr[j]=temp;
     }
+
+    public static void main(String[] args) {
+        int n=10000;
+        Integer[] a=new Integer[n];
+        for(int i=0;i<n;i++){
+            a[i]=(int)(Math.random()%n);
+        }
+        QuickSort.quickSort(a,n);
+        for(int i=1;i<n;i++){
+            if(a[i]<a[i-1])
+                throw new IllegalArgumentException("Sorted Error!");
+        }
+        System.out.println("Done!");
+    }
 }
