@@ -67,7 +67,9 @@ public class Main {
         // UF5虽然相对UF4进行有了优化, 但优化的地方出现的情况较少,
         // 所以性能更优表现的不明显, 甚至在一些数据下性能会更差
         UnionFindTestHelper.testUF5(n);*/
-        int n=10000;
+
+        //并查集测试
+        /*int n=10000;
         Integer[] a=new Integer[n];
         for(int i=0;i<n;i++){
             a[i]=(int)(Math.random()%n);
@@ -77,7 +79,52 @@ public class Main {
             if(a[i]<a[i-1])
                 throw new IllegalArgumentException("Sorted Error!");
         }
-        System.out.println("Done!");
+        System.out.println("Done!");*/
+
+        /*// 使用两种图的存储方式读取testG1.txt文件
+        String filename = "testG1.txt";
+        SparseGraph g1 = new SparseGraph(13, false);
+        ReadGraph readGraph1 = new ReadGraph(g1, filename);
+        System.out.println("test G1 in Sparse Graph:");
+        g1.show();
+
+        System.out.println();
+
+        DenseGraph g2 = new DenseGraph(13, false);
+        ReadGraph readGraph2 = new ReadGraph(g2 , filename );
+        System.out.println("test G1 in Dense Graph:");
+        g2.show();
+
+        System.out.println();
+
+        // 使用两种图的存储方式读取testG2.txt文件
+        filename = "testG2.txt";
+        SparseGraph g3 = new SparseGraph(6, false);
+        ReadGraph readGraph3 = new ReadGraph(g3, filename);
+        System.out.println("test G2 in Sparse Graph:");
+        g3.show();
+
+        System.out.println();
+
+        DenseGraph g4 = new DenseGraph(6, false);
+        ReadGraph readGraph4 = new ReadGraph(g4, filename);
+        System.out.println("test G2 in Dense Graph:");
+        g4.show();*/
+
+        // TestG1.txt
+        String filename1 = "testG1.txt";
+        SparseGraph g1 = new SparseGraph(13, false);
+        ReadGraph readGraph1 = new ReadGraph(g1, filename1);
+        Components component1 = new Components(g1);
+        System.out.println("TestG1.txt, Component Count: " + component1.getCcount());
+        System.out.println();
+
+        // TestG2.txt
+        String filename2 = "testG2.txt";
+        SparseGraph g2 = new SparseGraph(6, false);
+        ReadGraph readGraph2 = new ReadGraph(g2, filename2);
+        Components component2 = new Components(g2);
+        System.out.println("TestG2.txt, Component Count: " + component2.getCcount());
     }
 }
 class UnionFindTestHelper {

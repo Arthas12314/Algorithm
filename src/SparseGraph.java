@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 //稀疏图 - 邻接表
-public class SparseGraph {
-    class adjIterator{
+public class SparseGraph implements Graph{
+    /*class adjIterator{
         private SparseGraph Graph;
         private int vertex;
         private int index;
@@ -29,7 +29,7 @@ public class SparseGraph {
         public boolean end(){
             return index>=Graph.graph[vertex].size();
         }
-    }
+    }*/
 
     private int vertex;
     private int edge;
@@ -44,15 +44,19 @@ public class SparseGraph {
         for(int i=0;i<v;i++)
             graph[i]=new ArrayList<>();
     }
-
+    @Override
     public int V(){
         return vertex;
     }
+
+    @Override
     public int E(){
         return edge;
     }
 
+    @Override
     public void addEdge(int v,int w){
+        assert (v<0 && v>vertex && w<0 && w>vertex);
         if(hasEdge(v,w))
             return;
         graph[v].add(w);
@@ -61,10 +65,30 @@ public class SparseGraph {
         edge++;
     }
 
-    public boolean hasEdge(int v,int w){
+    @Override
+    public boolean hasEdge(int v,int w) {
+        assert (v<0 && v>vertex && w<0 && w>vertex);
         for( int i = 0 ; i < graph[v].size() ; i ++ )
             if( graph[v].get(i) == w )
                 return true;
         return false;
+    }
+
+    // 显示图的信息
+    public void show(){
+
+        for( int i = 0 ; i < vertex ; i ++ ){
+            System.out.print("vertex " + i + ":\t");
+            for( int j = 0 ; j < graph[i].size() ; j ++ )
+                System.out.print(graph[i].get(j) + "\t");
+            System.out.println();
+        }
+    }
+
+    // 返回图中一个顶点的所有邻边
+    // 由于java使用引用机制，返回一个ArrayList不会带来额外开销,
+    public Iterable<Integer> adj(int v) {
+        assert v >= 0 && v < vertex;
+        return graph[v];
     }
 }
