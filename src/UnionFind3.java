@@ -28,8 +28,9 @@ public class UnionFind3 implements UnionFind {
     public void unionElements(int p, int q) {
         int pRoot=find(p);
         int qRoot=find(q);
-        if(qRoot==pRoot)
+        if (qRoot == pRoot) {
             return;
+        }
         if(sz[pRoot]>sz[qRoot]){
             parent[qRoot]=pRoot;
             sz[pRoot]+=sz[qRoot];

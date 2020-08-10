@@ -12,13 +12,15 @@ public class ReadGraph {
         readFile(filename);
         try {
             int V = scanner.nextInt();
-            if (V < 0)
+            if (V < 0) {
                 throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
+            }
             assert V == graph.V();
 
             int E = scanner.nextInt();
-            if (E < 0)
+            if (E < 0) {
                 throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
+            }
 
             for (int i = 0; i < E; i++) {
                 int v = scanner.nextInt();
@@ -42,8 +44,9 @@ public class ReadGraph {
                 FileInputStream fileInputStream = new FileInputStream(file);
                 scanner = new Scanner(new BufferedInputStream(fileInputStream), StandardCharsets.UTF_8);
                 scanner.useLocale(Locale.ENGLISH);
-            } else
+            } else {
                 throw new IllegalArgumentException(filename + "doesn't exists.");
+            }
         } catch (IOException ioe) {
             throw new IllegalArgumentException("Couldn't open" + filename, ioe);
         }

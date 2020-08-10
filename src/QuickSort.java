@@ -21,8 +21,9 @@ public class QuickSort {
             InsertionSort.insertionSort(arr, l, r);
             return;
         }
-        if (l >= r)
+        if (l >= r) {
             return;
+        }
         int index = (int) (Math.random() % (r - l + 1) + l);
         swap(arr, index, l);
         Comparable e = arr[l];
@@ -96,8 +97,9 @@ public class QuickSort {
         }
         QuickSort.quickSort(a, n);
         for (int i = 1; i < n; i++) {
-            if (a[i] < a[i - 1])
+            if (a[i] < a[i - 1]) {
                 throw new IllegalArgumentException("Sorted Error!");
+            }
         }
         System.out.println("Done!");
     }

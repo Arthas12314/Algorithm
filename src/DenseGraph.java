@@ -26,11 +26,13 @@ public class DenseGraph implements Graph {
 
     @Override
     public void addEdge(int v, int w) {
-        if (hasEdge(v, w))
+        if (hasEdge(v, w)) {
             return;
+        }
         graph[v][w] = true;
-        if (!directed)
+        if (!directed) {
             graph[v][w] = true;
+        }
         edge++;
     }
 
@@ -43,8 +45,9 @@ public class DenseGraph implements Graph {
     public void show() {
 
         for (int i = 0; i < vertex; i++) {
-            for (int j = 0; j < vertex; j++)
+            for (int j = 0; j < vertex; j++) {
                 System.out.print(graph[i][j] + "\t");
+            }
             System.out.println();
         }
     }
@@ -54,9 +57,11 @@ public class DenseGraph implements Graph {
     public Iterable<Integer> adj(int v) {
         assert v >= 0 && v < vertex;
         ArrayList<Integer> adjV = new ArrayList<>();
-        for (int i = 0; i < vertex; i++)
-            if (graph[v][i])
+        for (int i = 0; i < vertex; i++) {
+            if (graph[v][i]) {
                 adjV.add(i);
+            }
+        }
         return adjV;
     }
 }

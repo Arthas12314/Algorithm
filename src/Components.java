@@ -37,8 +37,9 @@ public class Components {
         visited[v] = true;
         id[v] = ccount;
         for (int i : graph.adj(v)) {
-            if (!visited[i])
+            if (!visited[i]) {
                 dfs(i);
+            }
         }
     }
 

@@ -81,10 +81,12 @@ public class IndexMaxHeap<E extends Comparable<E>> {
     private void siftDown(int index) {
         while (leftChild(index) < size) {
             int j = leftChild(index);
-            if (j + 1 < size && data[indexes[j]].compareTo(data[indexes[j + 1]]) < 0)
+            if (j + 1 < size && data[indexes[j]].compareTo(data[indexes[j + 1]]) < 0) {
                 j++;
-            if (data[indexes[index]].compareTo(data[indexes[j]]) >= 0)
+            }
+            if (data[indexes[index]].compareTo(data[indexes[j]]) >= 0) {
                 break;
+            }
             swapIndexes(index, j);
             index = j;
         }
@@ -137,12 +139,13 @@ public class IndexMaxHeap<E extends Comparable<E>> {
         // 在对索引堆中的索引和反向索引进行排序后,
         // 两个数组都应该正好是1...count这count个索引
         boolean res = true;
-        for (int i = 1; i < size; i++)
+        for (int i = 1; i < size; i++) {
             if (copyIndexes[i - 1] + 1 != copyIndexes[i] ||
                     copyReverseIndexes[i - 1] + 1 != copyReverseIndexes[i]) {
                 res = false;
                 break;
             }
+        }
 
         if (!res) {
             System.out.println("Error!");
@@ -155,8 +158,9 @@ public class IndexMaxHeap<E extends Comparable<E>> {
     public static void main(String[] args) {
         int N = 1000000;
         IndexMaxHeap<Integer> indexMaxHeap = new IndexMaxHeap<>(N);
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < N; i++) {
             indexMaxHeap.add(i, (int) (Math.random() * N));
+        }
         assert indexMaxHeap.testIndexes();
     }
 }

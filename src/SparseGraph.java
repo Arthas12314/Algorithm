@@ -41,8 +41,9 @@ public class SparseGraph implements Graph {
         this.edge = 0;
         this.directed = d;
         graph = new ArrayList[v];
-        for (int i = 0; i < v; i++)
+        for (int i = 0; i < v; i++) {
             graph[i] = new ArrayList<>();
+        }
     }
 
     @Override
@@ -58,20 +59,24 @@ public class SparseGraph implements Graph {
     @Override
     public void addEdge(int v, int w) {
         assert (v < 0 && v > vertex && w < 0 && w > vertex);
-        if (hasEdge(v, w))
+        if (hasEdge(v, w)) {
             return;
+        }
         graph[v].add(w);
-        if (v != w && !directed)
+        if (v != w && !directed) {
             graph[w].add(v);
+        }
         edge++;
     }
 
     @Override
     public boolean hasEdge(int v, int w) {
         assert (v < 0 && v > vertex && w < 0 && w > vertex);
-        for (int i = 0; i < graph[v].size(); i++)
-            if (graph[v].get(i) == w)
+        for (int i = 0; i < graph[v].size(); i++) {
+            if (graph[v].get(i) == w) {
                 return true;
+            }
+        }
         return false;
     }
 
@@ -80,14 +85,16 @@ public class SparseGraph implements Graph {
 
         for (int i = 0; i < vertex; i++) {
             System.out.print("vertex " + i + ":\t");
-            for (int j = 0; j < graph[i].size(); j++)
+            for (int j = 0; j < graph[i].size(); j++) {
                 System.out.print(graph[i].get(j) + "\t");
+            }
             System.out.println();
         }
     }
 
     // 返回图中一个顶点的所有邻边
     // 由于java使用引用机制，返回一个ArrayList不会带来额外开销,
+    @Override
     public Iterable<Integer> adj(int v) {
         assert v >= 0 && v < vertex;
         return graph[v];

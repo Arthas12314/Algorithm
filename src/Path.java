@@ -41,10 +41,11 @@ public class Path {
         ArrayList<Integer> res = path(w);
         for (int i = 0; i < res.size(); i++) {
             System.out.print(res.get(i));
-            if (i == res.size() - 1)
+            if (i == res.size() - 1) {
                 System.out.println();
-            else
+            } else {
                 System.out.print(" -> ");
+            }
         }
     }
 

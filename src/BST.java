@@ -71,13 +71,15 @@ public class BST<K extends Comparable<K>,V> {
 
     }
     private Node minimum(Node node){
-        if(node.left==null)
+        if (node.left == null) {
             return node;
+        }
         return minimum(node.left);
     }
     private Node maximum(Node node){
-        if(node.right==null)
+        if (node.right == null) {
             return node;
+        }
         return maximum(node.right);
     }
     private Node removeMin(Node node){
@@ -129,27 +131,33 @@ public class BST<K extends Comparable<K>,V> {
         return node;
     }
     private Node findFloor(Node node,K key){
-        if(node==null)
+        if (node == null) {
             return node;
-        if(node.key.compareTo(key)==0)
+        }
+        if (node.key.compareTo(key) == 0) {
             return node;
-        else if(node.key.compareTo(key)>0)
-            return findFloor(node.left,key);
+        } else if (node.key.compareTo(key) > 0) {
+            return findFloor(node.left, key);
+        }
         Node temp=findFloor(node.right,key);
-        if(temp!=null)
+        if (temp != null) {
             return temp;
+        }
         return node;
     }
     private Node findCeil(Node node,K key){
-        if(node==null)
+        if (node == null) {
             return node;
-        if(node.key.compareTo(key)==0)
+        }
+        if (node.key.compareTo(key) == 0) {
             return node;
-        else if(node.key.compareTo(key)<0)
-            return findCeil(node.right,key);
+        } else if (node.key.compareTo(key) < 0) {
+            return findCeil(node.right, key);
+        }
         Node temp=findCeil(node.left,key);
-        if(temp!=null)
+        if (temp != null) {
             return temp;
+        }
         return node;
     }
 }
