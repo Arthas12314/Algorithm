@@ -13,8 +13,9 @@ public class UnionFind3 implements UnionFind {
     }
     @Override
     public int find(int p) {
-        while(parent[p]!=p)
+        while(parent[p]!=p) {
             p=parent[p];
+        }
         return p;
     }
 

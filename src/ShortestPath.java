@@ -9,67 +9,68 @@ public class ShortestPath {
     private boolean[] visited;
     private int[] ord;
 
-    public ShortestPath(Graph graph,int s){
-        this.graph=graph;
-        this.start=s;
-        from=new int[graph.V()];
-        visited=new boolean[graph.V()];
-        ord=new int[graph.V()];
-        for(int i=0;i<graph.V();i++){
-            visited[i]=false;
-            from[i]=-1;
-            ord[i]=-1;
+    public ShortestPath(Graph graph, int s) {
+        this.graph = graph;
+        this.start = s;
+        from = new int[graph.V()];
+        visited = new boolean[graph.V()];
+        ord = new int[graph.V()];
+        for (int i = 0; i < graph.V(); i++) {
+            visited[i] = false;
+            from[i] = -1;
+            ord[i] = -1;
         }
 
-        Queue<Integer> queue=new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(start);
-        visited[start]=true;
-        ord[start]=0;
+        visited[start] = true;
+        ord[start] = 0;
 
-        while (!queue.isEmpty()){
-            int temp=queue.remove();
-            for(int i:graph.adj(temp)){
-                if(!visited[i]){
+        while (!queue.isEmpty()) {
+            int temp = queue.remove();
+            for (int i : graph.adj(temp)) {
+                if (!visited[i]) {
                     queue.add(i);
-                    visited[i]=true;
-                    from[i]=temp;
+                    visited[i] = true;
+                    from[i] = temp;
                     ord[i]++;
                 }
             }
         }
     }
 
-    public boolean hasPath(int w){
+    public boolean hasPath(int w) {
         return visited[w];
     }
 
-    public ArrayList<Integer> path(int w){
-        int temp=w;
-        LinkedList<Integer> list=new LinkedList<>();
-        while (temp!=-1){
+    public ArrayList<Integer> path(int w) {
+        int temp = w;
+        LinkedList<Integer> list = new LinkedList<>();
+        while (temp != -1) {
             list.add(temp);
-            temp=from[temp];
+            temp = from[temp];
         }
-        ArrayList<Integer> res=new ArrayList<>();
-        while(!list.isEmpty())
+        ArrayList<Integer> res = new ArrayList<>();
+        while (!list.isEmpty())
             res.add(list.removeLast());
         return res;
     }
 
-    public void showPath(int w){
-        ArrayList<Integer> res=path(w);
-        for(int i=0;i<res.size();i++){
+    public void showPath(int w) {
+        ArrayList<Integer> res = path(w);
+        for (int i = 0; i < res.size(); i++) {
             System.out.print(res.get(i));
-            if(i==res.size()-1)
+            if (i == res.size() - 1)
                 System.out.println();
             else
                 System.out.print(" -> ");
         }
     }
 
-    public int length(int w){
+    public int length(int w) {
         return ord[w];
     }
+
     // 测试无权图最短路径算法
     public static void main(String[] args) {
 
@@ -80,11 +81,11 @@ public class ShortestPath {
 
         // 比较使用深度优先遍历和广度优先遍历获得路径的不同
         // 广度优先遍历获得的是无权图的最短路径
-        Path dfs = new Path(g,0);
+        Path dfs = new Path(g, 0);
         System.out.print("DFS : ");
         dfs.showPath(6);
 
-        ShortestPath bfs = new ShortestPath(g,0);
+        ShortestPath bfs = new ShortestPath(g, 0);
         System.out.print("BFS : ");
         bfs.showPath(6);
 
@@ -97,11 +98,11 @@ public class ShortestPath {
 
         // 比较使用深度优先遍历和广度优先遍历获得路径的不同
         // 广度优先遍历获得的是无权图的最短路径
-        Path dfs2 = new Path(g2,0);
+        Path dfs2 = new Path(g2, 0);
         System.out.print("DFS : ");
         dfs2.showPath(3);
 
-        ShortestPath bfs2 = new ShortestPath(g,0);
+        ShortestPath bfs2 = new ShortestPath(g, 0);
         System.out.print("BFS : ");
         bfs.showPath(3);
     }

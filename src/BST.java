@@ -12,7 +12,7 @@ public class BST<K extends Comparable<K>,V> {
         }
         public Node(Node node){
             this.key=node.key;
-            this.value=value;
+            this.value=node.value;
             this.left=node.left;
             this.right=node.right;
         }

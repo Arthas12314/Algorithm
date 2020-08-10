@@ -56,8 +56,9 @@ public class MaxHeap<E extends Comparable<E>>{
             int j=leftChild(index);
             if(j+1<size && data[j].compareTo(data[j+1])<0)
                 j++;
-            if(data[index].compareTo(data[j])>=0)
+            if (data[index].compareTo(data[j]) >= 0) {
                 break;
+            }
             //swap(index,j);
             data[index]=data[j];
             index=j;
